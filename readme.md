@@ -4,6 +4,7 @@
 
 Я пользуюсь системой на английском (и вам советую), поэтому во время настройки у тебя могут возникнуть проблемы. Рекомендую хотя бы на время установки и настройки поставить английский как системный язык.
 
+---
 # 1. Выбор рут менеджера
 
 Подавляющее большинство юзеров, к счастью, уже забыла про Magisk и его форки. Это правильное решение, т.к. несмотря на свою популярность, этот рут менеджер имеет тонну трейсов (остатков в системе), устаревший метод монтирования модулей и еще много, много минусов, по сравнению с современными решениями.
@@ -16,6 +17,7 @@
 
 В этот раз будем устанавливать KSUN в LKM режиме (на уровне модуля ядра), а не GKI (на уровне драйвера), так как этот метод является более универсальным и стабильным для мобильных устройств.
 
+---
 # 2. Краткиий курс по установке
 ## 2.0.1. Небольное предисловие касаемо Google Pixel
 Тут стоит остановиться на секунду. Для всех девайсов установка производится одинаково, но для девайсов Google Pixel я крайне рекомендую скачивать AK3 образ c KSUN из [моего репозитория](https://github.com/mrvokintos/Sultan_KernelSU_SUSFS). Эти образы содержат в себе крайне важные оптимизационные твики для девайсов с процессором Tensor G2-G4. После загрузки необходимого AK3 образа, шаги для установки абсолютное те же самые, что и для любого устройства.
@@ -63,7 +65,8 @@ fastboot flash boot PATCHED.img
 
 Подробнее про это можно почитать [здесь](/gki-susfs.md)
 
-# 2.3. Модули
+---
+# 3. Модули
 Теперь, когда ты установил рут, самое время установить все необходимые модули
 
 Быстро пройдемся по тому, что будем устанавливать:
@@ -85,35 +88,76 @@ fastboot flash boot PATCHED.img
 3. TrickyAddon
 4. HMA-OSS
 
-# 2.4. Настройка модулей
-Если ты смог выполнить все, что описано выше, то ты человек не глупый, а значит найти необходимые настройки сможешь сам. Я оставлю лишь несколько скриншотов, которые наведут на верные мысли:
+---
+# 4. Настройка модулей
 
-<div style="display: flex; justify-content: space-between;">
-  <img src="/assets/photo1.jpg" width="24%">
-  <img src="/assets/photo2.jpg" width="24%">
-</div>
+Настраивать всё вручную — затея долгая и бессмысленная. В папку `/configs` этого репозитория я закинул готовые конфиги для HMA и TrickyStore. Тебе остается их просто применить.
 
-<div style="display: flex; justify-content: space-between;">
-  <img src="/assets/photo3.jpg" width="24%">
-  <img src="/assets/photo4.jpg" width="24%">
-  <img src="/assets/photo5.jpg" width="24%">
-</div>
-<br><br>
+### 1. TEESimulator (TrickyStore)
+1. Скачиваешь [target.txt](https://github.com/mrvokintos/RootHide/releases/download/configs/target.txt).
 
-После верной настройки имеем полностью скрытый рут:
-<div style="display: flex; justify-content: space-between;">
-  <img src="/assets/photo_1.jpg" width="24%">
-  <img src="/assets/photo_2.jpg" width="24%">
-  <img src="/assets/photo_3.jpg" width="24%">
-  <img src="/assets/photo_4.jpg" width="24%">
-  <img src="/assets/clip.png" width="24%">
-</div>
+2. Любым рут-проводником закидываешь файл по пути `/data/adb/tricky_store/target.txt` (с заменой, если файл уже существует).
 
-# 3. Конец
+3. Открываешь **WebUI** модуля TrickyAddon через рут-менеджер
+   <details>
+     <summary>Скриншот</summary>
+     <br>
+     <img src="/assets/tricky/tricky_1.jpg" width="24%">
+   </details>
+   
+4. - Выбираешь все установленные приложения
+   - Убираешь выбор ненужных
+   <br>
+   <details>
+     <summary>Скриншот</summary>
+     <br>
+     <img src="/assets/tricky/tricky_2.jpg" width="24%">
+   </details>
+
+### 2. HMA-OSS
+
+1. Скачиваешь [HMA-OSS_config.json](https://github.com/mrvokintos/RootHide/releases/download/configs/HMA-OSS_config.json).
+
+2. Заходишь в HMA-OSS.
+   <details>
+     <summary>Скриншот</summary>
+     <br>
+     <img src="/assets/hma/hma_1.jpg" width="24%">
+   </details>
+
+3. Жмёшь **Restore config** и выбираешь скачанный [HMA-OSS_config.json](https://github.com/mrvokintos/RootHide/releases/download/configs/HMA-OSS_config.json).
+   <details>
+     <summary>Скриншот</summary>
+     <br>
+     <img src="/assets/hma/hma_2.jpg" width="24%">
+   </details>
+
+4. Проверяешь, чтобы сервис HMA был активен.
+   <details>
+     <summary>Скриншот</summary>
+     <br>
+     <img src="/assets/hma/hma_3.jpg" width="24%">
+   </details>
+
+---
+После применения конфигов и обязательной перезагрузки получаем полностью скрытый рут:
+   <details>
+     <summary>Скриншот</summary>
+     <br>
+  <img src="/assets/total/photo_1.jpg" width="20%">
+  <img src="/assets/total/photo_2.jpg" width="20%">
+  <img src="/assets/total/photo_3.jpg" width="20%">
+  <img src="/assets/total/photo_4.jpg" width="20%">
+  <img src="/assets/total/clip.png" width="30%">
+   </details>
+
+# 5. Конец
 Благодарю за прочтение этого гайда. Я надеюсь, для кого-то он окажется полезным и поможет не попасть на бабки
-<div style="display: flex; justify-content: space-between;">
-  <img src="/assets/scam.png" width="24%">
-</div>
+   <details>
+     <summary>Скриншот</summary>
+     <br>
+     <img src="/assets/scam.png" width="24%">
+   </details>
 <br>
 
 Поддержать автора гайда, задать вопрос и получить помощь: в телеграме [mrvokintos](https://t.me/mrvokintos), discord: mrvokintos
