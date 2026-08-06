@@ -22,14 +22,12 @@
 [Linux/Android](https://github.com/magojohnji/magiskboot-linux)<br>
 [Windows](https://github.com/svoboda18/magiskboot/releases/latest)
 
-2.1. (Linux/Android) Перемещаем в удобную папку и даем права на выполнение:
+1.1. (Linux/Android) Перемещаем в удобную папку и даем права на выполнение:
 ```
 chmod +x magiskboot
 ```
 
-2.2. (Windows)
-Открываем эту папку через cmd
-
+2. Открываем эту папку в терминале
 
 3. В ту же папку копируем boot.img
 
