@@ -102,11 +102,11 @@ fastboot flash boot PATCHED.img
 
 После верной настройки имеем полностью скрытый рут:
 <div style="display: flex; justify-content: space-between;">
-  <img src="/assets/clip.png" width="24%">
   <img src="/assets/photo_1.jpg" width="24%">
   <img src="/assets/photo_2.jpg" width="24%">
   <img src="/assets/photo_3.jpg" width="24%">
   <img src="/assets/photo_4.jpg" width="24%">
+  <img src="/assets/clip.png" width="24%">
 </div>
 
 # 3. Конец
